@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cygxtest.mapper.UserRoleMapper">
+
+    <resultMap id="rm" type="com.cygxtest.entity.UserRole">
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <result column="user_id" jdbcType="BIGINT" property="userId" />
+        <result column="role_id" jdbcType="BIGINT" property="roleId" />
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    </resultMap>
+
+
+
+    <select id="selectRoleIdByUserID" parameterType="Integer" resultMap="rm">
+      SELECT role_id
+       from sys_user_role
+        where user_id =#{userid}
+    </select>
+
+</mapper>
